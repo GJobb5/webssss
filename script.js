@@ -36,7 +36,7 @@ function toggleTheme() {
   document.getElementById("themeToggle").textContent = nextTheme === "dark" ? "🌙" : "🌞";
 
   applyCreditTheme();
-  updateCanvasBackground(); // ← เพิ่มตรงนี้
+  updateCanvasBackground();
 }
 
 function loadTheme() {
@@ -51,7 +51,7 @@ function loadTheme() {
 
   document.getElementById("themeToggle").textContent = savedTheme === "dark" ? "🌙" : "🌞";
 
-  updateCanvasBackground(); // ← เพิ่มตรงนี้
+  updateCanvasBackground();
 }
 
 
@@ -70,7 +70,7 @@ function animateParticles() {
 
   const particles = [];
 
-  // สร้าง particles
+  // particles
   for (let i = 0; i < 600; i++) {
     const theta = Math.random() * 2 * Math.PI;
     const phi = Math.acos(2 * Math.random() - 1);
@@ -93,16 +93,15 @@ function animateParticles() {
       particles[i] = rotateX(particles[i], angleX);
     }
 
-    // จัดเรียง particles ตามตำแหน่ง z
+    // จัดเรียง particles
     particles.sort((a, b) => b.z - a.z);
 
-    // วาด particles
+    // particles
     for (const p of particles) {
       const scale = maxRadius / (maxRadius + p.z + 200);
       const x2d = p.x * scale + width / 2;
       const y2d = p.y * scale + height / 2;
 
-      // ปรับการคำนวณตำแหน่ง x, y เพื่อให้โลกดูเป็นกลม
       const radius = 2 * scale;
       const glowColor = `rgba(0, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${scale})`;
 
@@ -115,11 +114,9 @@ function animateParticles() {
       ctx.shadowBlur = 0;
     }
 
-    // เรียก `requestAnimationFrame` เพื่อทำให้การหมุนใน real-time
     requestAnimationFrame(draw);
   }
 
-  // ฟังก์ชันหมุนในแนว Y
   function rotateY(point, angle) {
     const cos = Math.cos(angle);
     const sin = Math.sin(angle);
@@ -128,7 +125,6 @@ function animateParticles() {
     return { ...point, x, z };
   }
 
-  // ฟังก์ชันหมุนในแนว X
   function rotateX(point, angle) {
     const cos = Math.cos(angle);
     const sin = Math.sin(angle);
@@ -171,7 +167,7 @@ function updateCanvasBackground() {
 
   canvas.style.background = isLight
     ? "radial-gradient(ellipse at center, #e0f7ff, #b3e5fc)" // สีฟ้าอ่อน
-    : "radial-gradient(ellipse at center, #000015, #000010)"; // ดั้งเดิมแบบมืด
+    : "radial-gradient(ellipse at center, #000015, #000010)"; // ดั้งเดิม
 }
 
 
