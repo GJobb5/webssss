@@ -18,7 +18,6 @@ function getDateDiff(start, end) {
   return { years, months, days };
 }
 
-// Smoother Time Update
 function updateTime() {
   const startDate = new Date(2023, 9, 17);
   const now = new Date();
@@ -40,13 +39,11 @@ function updateTime() {
   document.getElementById("timePart").textContent = 
     `${hourPart.toString().padStart(2, '0')} : ${minutePart.toString().padStart(2, '0')} : ${secondPart.toString().padStart(2, '0')}`;
   
-  // Create occasional heart effect
   if (Math.random() < 0.01) {
     createHeartEffect();
   }
 }
 
-// Theme Management
 function toggleTheme() {
   const body = document.body;
   const isLight = body.classList.contains("light");
@@ -71,7 +68,6 @@ function loadTheme() {
   updateCanvasBackground();
 }
 
-// Enhanced Particle System
 function initParticles() {
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
@@ -90,7 +86,6 @@ function initParticles() {
   const particleCount = Math.floor(width * height / 1000);
   const particles = [];
   
-  // Heart shape coordinates
   const heartShape = [];
   for (let i = 0; i < 100; i++) {
     const t = i / 100 * Math.PI * 2;
@@ -99,9 +94,9 @@ function initParticles() {
     heartShape.push({x, y});
   }
   
-  // Create particles
+
   for (let i = 0; i < particleCount; i++) {
-    const isHeartParticle = i % 20 === 0; // Every 20th particle follows heart shape
+    const isHeartParticle = i % 20 === 0; 
     const heartPos = heartShape[i % heartShape.length];
     
     particles.push({
@@ -129,28 +124,23 @@ function initParticles() {
       const p = particles[i];
       
       if (p.isHeartParticle) {
-        // Heart-shaped motion
         p.angle += 0.005;
         const heartScale = 8;
         p.x = centerX + (p.heartPos.x * heartScale) * Math.cos(p.angle) - (p.heartPos.y * heartScale) * Math.sin(p.angle);
         p.y = centerY + (p.heartPos.x * heartScale) * Math.sin(p.angle) + (p.heartPos.y * heartScale) * Math.cos(p.angle);
       } else {
-        // Normal particle motion with occasional attraction to center
         p.x += p.speedX;
         p.y += p.speedY;
         
-        // Boundary check
         if (p.x < 0 || p.x > width) p.speedX *= -1;
         if (p.y < 0 || p.y > height) p.speedY *= -1;
         
-        // Occasionally drift toward center
         if (Math.random() < 0.01) {
           p.speedX += (centerX - p.x) * 0.0002;
           p.speedY += (centerY - p.y) * 0.0002;
         }
       }
       
-      // Draw particle
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
@@ -165,7 +155,6 @@ function initParticles() {
   animate();
 }
 
-// Heart Effect Animation
 function createHeartEffect() {
   const heart = document.createElement('div');
   heart.style.position = 'fixed';
@@ -197,7 +186,6 @@ function createHeartEffect() {
   }, 2000);
 }
 
-// Canvas Background
 function updateCanvasBackground() {
   const canvas = document.getElementById("background");
   const ctx = canvas.getContext("2d");
@@ -229,7 +217,6 @@ function updateCanvasBackground() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Initialize everything
 function init() {
   loadTheme();
   updateCanvasBackground();
@@ -239,11 +226,9 @@ function init() {
   
   document.getElementById("themeToggle").addEventListener("click", toggleTheme);
   
-  // Initial hearts
   for (let i = 0; i < 5; i++) {
     setTimeout(createHeartEffect, i * 300);
   }
 }
 
-// Start the app
 init();
