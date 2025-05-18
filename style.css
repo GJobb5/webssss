@@ -182,6 +182,7 @@ h1 {
 
 
 /*///////////////////////////////////////////*/
+/* ปรับให้ดีไซน์ดูทันสมัย */
 #musicPlayer {
   position: fixed;
   bottom: 20px;
@@ -200,6 +201,24 @@ h1 {
   transition: all 0.3s ease;
 }
 
+#songSelector {
+  margin-bottom: 15px;
+}
+
+#songList {
+  width: 100%;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #ff4d6d;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#songList:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 
 #musicToggle {
   background: #ff4d6d;
@@ -232,8 +251,72 @@ h1 {
   color: #fff;
 }
 
-body.light #volumePercent {
-  color: #5a0a24;
+#musicInfo {
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+}
+
+#musicTime {
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+#songSelector {
+  margin-bottom: 15px;
+}
+
+#songList {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #ff4d6d;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  appearance: none;  /* ปิดสไตล์เริ่มต้นของบราวเซอร์ */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('https://img.icons8.com/ios-filled/50/ffffff/chevron-down.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+}
+
+#songList:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#songList:focus {
+  border-color: #ff4d6d;
+  box-shadow: 0 0 5px rgba(255, 77, 109, 0.7);
+}
+
+#songSelector::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+}
+
+#songList option {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+#songList option:hover {
+  background-color: #ff4d6d;
 }
 
 

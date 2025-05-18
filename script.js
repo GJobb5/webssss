@@ -287,6 +287,8 @@ window.onload = function() {
 
 const audio = document.getElementById("audio");
 const musicToggle = document.getElementById("musicToggle");
+const songList = document.getElementById("songList");
+const songTitle = document.getElementById("songTitle");
 const musicTime = document.getElementById("musicTime");
 const volumeSlider = document.getElementById("volumeSlider");
 const volumePercent = document.getElementById("volumePercent");
@@ -295,6 +297,7 @@ const volumePercent = document.getElementById("volumePercent");
 audio.volume = 1.0;
 volumePercent.textContent = `${volumeSlider.value}%`;
 
+// ฟังก์ชั่นในการเล่น/หยุดเพลง
 musicToggle.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
@@ -305,6 +308,7 @@ musicToggle.addEventListener("click", () => {
   }
 });
 
+// ฟังก์ชั่นในการปรับระดับเสียง
 volumeSlider.addEventListener("input", () => {
   const value = volumeSlider.value;
   const volume = value / 100;
@@ -312,6 +316,7 @@ volumeSlider.addEventListener("input", () => {
   volumePercent.textContent = `${value}%`;
 });
 
+// ฟังก์ชั่นในการแสดงเวลาเพลง
 audio.addEventListener("timeupdate", () => {
   const formatTime = (s) => {
     const m = Math.floor(s / 60).toString().padStart(2, "0");
@@ -320,6 +325,24 @@ audio.addEventListener("timeupdate", () => {
   };
   musicTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration || 0)}`;
 });
+
+// ฟังก์ชั่นในการเปลี่ยนเพลง
+songList.addEventListener("change", () => {
+  const selectedSong = songList.value;
+  audio.src = selectedSong;
+  songTitle.textContent = `ชื่อเพลง: ${songList.options[songList.selectedIndex].text}`;
+  audio.play();
+  musicToggle.textContent = "⏸️ หยุดเพลง";
+});
+
+
+// ฟังก์ชั่นในการอัปเดตข้อมูลเพลง
+function updateSongInfo() {
+  songTitle.textContent = `ชื่อเพลง: ${songList.options[songList.selectedIndex].text}`;
+}
+
+updateSongInfo();
+
 
 
 
