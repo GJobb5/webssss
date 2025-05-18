@@ -182,6 +182,58 @@ h1 {
 
 
 /*///////////////////////////////////////////*/
+#musicPlayer {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+  font-family: 'Prompt', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+  transition: all 0.3s ease;
+}
+
+#musicToggle {
+  background: #ff4d6d;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+#volumeSliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+#volumeSlider {
+  width: 120px;
+  accent-color: #ff4d6d;
+  cursor: pointer;
+}
+
+#volumePercent {
+  font-size: 0.9rem;
+  min-width: 40px;
+  color: #fff;
+}
+
+body.light #volumePercent {
+  color: #5a0a24;
+}
+
+
+
 
 #datePart {
   margin-bottom: 10px;

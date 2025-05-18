@@ -31,6 +31,27 @@
   <div id = "footerText"></div>
   
   <div id="heartEffect"></div>
+  
+  <div id="musicPlayer">
+    <button id="musicToggle">🎵 เล่นเพลง</button>
+
+    <div id="volumeSliderWrapper">
+      <input type="range" id="volumeSlider" min="0" max="100" value="100">
+      <span id="volumePercent">100%</span>
+    </div>
+
+    <div id="musicInfo">
+      <div id="songTitle">ชื่อเพลง: เพลงรักเพลงแรก</div>
+      <div id="musicTime">00:00 / 00:00</div>
+    </div>
+
+    <audio id="audio" src="music/1.mp3"></audio>
+  </div>
+
+
+
+
+
   <script src="script.js"></script>
 </body>
 </html>

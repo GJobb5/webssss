@@ -285,6 +285,42 @@ window.onload = function() {
   typeWriter('footerText', 'rak fahsai', 120);
 };
 
+const audio = document.getElementById("audio");
+const musicToggle = document.getElementById("musicToggle");
+const musicTime = document.getElementById("musicTime");
+const volumeSlider = document.getElementById("volumeSlider");
+const volumePercent = document.getElementById("volumePercent");
+
+// ตั้งค่าเริ่มต้น
+audio.volume = 1.0;
+volumePercent.textContent = `${volumeSlider.value}%`;
+
+musicToggle.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    musicToggle.textContent = "⏸️ หยุดเพลง";
+  } else {
+    audio.pause();
+    musicToggle.textContent = "🎵 เล่นเพลง";
+  }
+});
+
+volumeSlider.addEventListener("input", () => {
+  const value = volumeSlider.value;
+  const volume = value / 100;
+  audio.volume = volume;
+  volumePercent.textContent = `${value}%`;
+});
+
+audio.addEventListener("timeupdate", () => {
+  const formatTime = (s) => {
+    const m = Math.floor(s / 60).toString().padStart(2, "0");
+    const sec = Math.floor(s % 60).toString().padStart(2, "0");
+    return `${m}:${sec}`;
+  };
+  musicTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration || 0)}`;
+});
+
 
 
 
