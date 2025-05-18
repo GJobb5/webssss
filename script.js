@@ -261,6 +261,33 @@ function drawHeartAnimation() {
   draw();
 }
 
+function typeWriter(elementId, text, speed) {
+  const element = document.getElementById(elementId);
+  let i = 0;
+
+  element.innerHTML = '';
+
+  function addCharacter() {
+    if (i < text.length) {
+      const span = document.createElement('span');
+      span.textContent = text.charAt(i);
+      element.appendChild(span);
+      i++;
+
+      setTimeout(addCharacter, speed);
+    }
+  }
+
+  addCharacter();
+}
+
+window.onload = function() {
+  typeWriter('footerText', 'rak fahsai', 120);
+};
+
+
+
+
 function init() {
   loadTheme();
   updateCanvasBackground();
